@@ -62,11 +62,10 @@ cat /etc/resolv.conf | awk '/^nameserver/{ printf "  Name Server:\t" $2 "\n"}'
 printf "\n"
 
 #==================================================================
-
 printf "${r}============ SERVICES ${z}\n"
-serviceStatus apache2
-serviceStatus mysql
-serviceStatus bind9
+#serviceStatus apache2
+#serviceStatus mysql
+#serviceStatus bind9
 
 printf "\n"
 printf "${z}\n"
