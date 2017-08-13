@@ -1,11 +1,12 @@
 # piSys
-Shell script shows your Raspberry Pi system information from the command line. 
+Open terminal prompt, ssh to your Raspberry Pi device and use this script sys.sh to quickly view system information about the Raspbian OS running on your Raspberry Pi 
 
 ### Screenshot 
 ![Screenshot](source/screen.png)
 
 
 ### Installation
+ssh to your Raspberry Pi devic and run the following command to install the script
 ```bash
 $ git clone https://github.com/ffares/piSys.git
 $ cd piSys
