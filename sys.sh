@@ -10,6 +10,7 @@ secs=$((${upSeconds}%60))
 mins=$((${upSeconds}/60%60))
 hours=$((${upSeconds}/3600%24))
 days=$((${upSeconds}/86400))
+BASEDIR=$(dirname "$0")
 
 IFS=$'\n' USERS=`users` DATE=`date` KERNEL=`uname -srn` CPWD=`pwd` ME=`whoami` MYIP=`curl -s ipinfo.io/ip` PL=`uname -m`
 Free=`cat /proc/meminfo | grep MemFree | awk {'print $2/1024 " MB (Free)"'}`
@@ -19,6 +20,7 @@ UPTIME=`printf "%d days, %02dh %02dm %02ds" "$days" "$hours" "$mins" "$secs"`
 Proc=`ps ax | wc -l | tr -d " "` Mac=`cat /sys/class/net/eth0/address`
 
 function serviceStatus () {
+if service --status-all | grep -Fq ${1}; then 
 if /etc/init.d/$1 status > /dev/null
 then
 printf "  ${z}$1:\t${g}Running " 
@@ -26,11 +28,14 @@ service $1 status | grep "Active" | cut -d ";" -f2
 else
 printf "  $1:\t${a}NO RUNNING${z}\n"
 fi
+else
+printf "  $1:\t${a}Not Installted${z}\n"
+fi
 } 
 
 
 clear
-cat ./banner.txt
+cat $BASEDIR/banner.txt
 printf "\n"
 #==================================================================
 printf "${r}============ SYSTEM ${z} ${a}==> "$HOSTNAME" <==${z}\n"
@@ -63,12 +68,11 @@ printf "\n"
 
 #==================================================================
 printf "${r}============ SERVICES ${z}\n"
-#serviceStatus apache2
-#serviceStatus mysql
+serviceStatus apache2
+serviceStatus mysql
 #serviceStatus bind9
 
 printf "\n"
 printf "${z}\n"
-
 
 exit 0
