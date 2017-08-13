@@ -1,7 +1,7 @@
 #!/bin/bash
-# sys shell script, shows system info
+# sys shell script, shows Raspberry Pi system info
 # By Fares, Aug 2017
-# version 1.0 - fares.net 2
+# version 1.0 - fares.net 001
 #################################
 
 a=`tput setaf 1` r=`tput setaf 8` g=`tput setaf 2` b=`tput setaf 3` z=`tput sgr0` # no color
