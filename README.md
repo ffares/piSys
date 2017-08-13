@@ -19,3 +19,5 @@ Using this script is very simple, just run this from the commnd line:
 ```bash
 $ ./sys.sh
 ```
+
+* Terminal theme used in the screenshot can be downloaded from here http://color.smyck.org
