@@ -1,7 +1,7 @@
 #!/bin/bash
 # sys shell script, shows Raspberry Pi system info
 # By Fares, Aug 2017
-# version 1.0 - fares.net 002
+# version 1.0 - fares.net 004
 #################################
 
 a=`tput setaf 1` r=`tput setaf 8` g=`tput setaf 2` b=`tput setaf 3` z=`tput sgr0` # no color
@@ -12,7 +12,15 @@ hours=$((${upSeconds}/3600%24))
 days=$((${upSeconds}/86400))
 BASEDIR=$(dirname "$0")
 
-IFS=$'\n' USERS=`users` DATE=`date` KERNEL=`uname -srn` CPWD=`pwd` ME=`whoami` MYIP=`curl -s ipinfo.io/ip` PL=`uname -m`
+IFS=$'\n'
+USERS=`users`
+DATE=`date`
+KERNEL=`uname -srn`
+OS=`lsb_release -d`
+CPWD=`pwd`
+ME=`whoami`
+MYIP=`curl -s ipinfo.io/ip` 
+PL=`uname -m`
 Free=`cat /proc/meminfo | grep MemFree | awk {'print $2/1024 " MB (Free)"'}`
 Total=`cat /proc/meminfo | grep MemTotal | awk {'print $2/1024 " MB (Total)"'}`
 Temp=`/opt/vc/bin/vcgencmd measure_temp`
@@ -35,11 +43,12 @@ fi
 
 
 clear
-cat $BASEDIR/banner.txt
+cat $BASEDIR/source/banner.txt
 printf "\n"
 #==================================================================
 printf "${r}============ SYSTEM ${z} ${a}==> "$HOSTNAME" <==${z}\n"
 printf "  Date:\t\t${b}"$DATE"${z}\n"
+printf "  OS:\t\t"${OS//Description:	}"\n"
 printf "  Kernel:\t"$KERNEL" ("$PL")\n"
 printf "  Uptime:\t"$UPTIME"\n"
 printf '  Load:\t\t'; uptime | awk '{print $10,$11,$12}';
