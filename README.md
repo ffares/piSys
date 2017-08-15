@@ -1,5 +1,5 @@
 # piSys
-Open terminal prompt, ssh to your Raspberry Pi device and use this script sys.sh to quickly view system information about the Raspbian OS running on your Raspberry Pi 
+Open terminal prompt, ssh to your **Raspberry Pi** device and use this script sys.sh to quickly view system information about the Raspbian OS running on your Raspberry Pi 
 
 ### Screenshot 
 ![Screenshot](source/screen.png)
@@ -20,4 +20,9 @@ Using this script is very simple, just run this from the commnd line:
 $ ./sys.sh
 ```
 
-* Terminal theme used in the screenshot can be downloaded from here http://color.smyck.org
+You may wish to run this script on login, you will need to edit .bash_profile file `nano ~/.bash_profile` and add this like: 
+`/home/pi/piSys/sys.sh`
+
+
+
+> Terminal theme used in the screenshot can be downloaded from here http://color.smyck.org
