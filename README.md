@@ -6,7 +6,7 @@ Open terminal prompt, ssh to your **Raspberry Pi** device and use this script sy
 
 
 ### Installation
-ssh to your Raspberry Pi devic and run the following command to install the script
+ssh to your Raspberry Pi device and run the following command to install the script
 ```bash
 $ git clone https://github.com/ffares/piSys.git
 $ cd piSys
