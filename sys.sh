@@ -23,7 +23,7 @@ MYIP=`curl -s ipinfo.io/ip`
 PL=`uname -m`
 Free=`cat /proc/meminfo | grep MemFree | awk {'print $2/1024 " MB (Free)"'}`
 Total=`cat /proc/meminfo | grep MemTotal | awk {'print $2/1024 " MB (Total)"'}`
-Temp=`/opt/vc/bin/vcgencmd measure_temp`
+Temp=`paste <(cat /sys/class/thermal/thermal_zone*/type) <(cat /sys/class/thermal/thermal_zone*/temp) | column -s $'\t' -t | sed 's/\(.\)..$/.\1°C/'`
 UPTIME=`printf "%d days, %02dh %02dm %02ds" "$days" "$hours" "$mins" "$secs"`
 Proc=`ps ax | wc -l | tr -d " "` Mac=`cat /sys/class/net/eth0/address`
 
